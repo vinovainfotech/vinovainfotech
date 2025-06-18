@@ -1,3 +1,4 @@
+/* Reset and base */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -17,11 +18,10 @@ body {
   padding: 40px 0;
 }
 
-/* Header/Navbar */
+/* Header & Navbar */
 header {
   background: #ffffff;
-  padding: 0;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
   position: sticky;
   top: 0;
   z-index: 1000;
@@ -31,12 +31,13 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 20px 0;
+  position: relative;
 }
 
 .logo-area {
   display: flex;
   align-items: center;
-  gap: 8px;
 }
 
 .logo-img {
@@ -45,60 +46,77 @@ header {
   border-radius: 8px;
 }
 
-.logo-text {
-  font-size: 20px;
-  font-weight: 600;
-  color: #1a1a2e;
+/* Desktop nav styles */
+.desktop-nav {
+  display: flex;
 }
 
-.nav-links {
-  display: flex;
+.desktop-nav .nav-links {
   list-style: none;
+  display: flex;
   gap: 24px;
 }
 
-.nav-links a {
+.desktop-nav .nav-links a {
   color: #333;
   text-decoration: none;
   font-weight: 500;
-  font-size: 15px;
-  position: relative;
   padding: 6px;
-  transition: color 0.3s;
+  transition: color 0.5s;
+
 }
 
-.nav-links a::after {
-  content: '';
-  height: 2px;
-  width: 0;
-  background: darkblue;
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  transition: width 0.3s ease;
-}
-
-.nav-links a:hover {
+.desktop-nav .nav-links a:hover {
   color: #00aaff;
 }
 
-.nav-links a:hover::after {
-  width: 100%;
+/* Hamburger styles */
+.hamburger {
+  font-size: 2rem;
+  cursor: pointer;
+  display: none;
+  user-select: none;
 }
 
-@media (max-width: 768px) {
-  .nav-links {
-    flex-direction: column;
-    gap: 12px;
-  }
-
-  .nav-container {
-    flex-direction: column;
-    align-items: flex-start;
-  }
+/* Mobile nav */
+.mobile-nav {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  height: 100%;
+  width: 250px;
+  background: white;
+  box-shadow: -4px 0 8px rgba(0, 0, 0, 0.1);
+  transition: right 0.3s ease;
+  padding-top: 80px;
+  z-index: 9999;
 }
 
+.mobile-nav.active {
+  right: 0;
+}
 
+.mobile-nav .nav-links {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding-left: 30px;
+}
+
+.mobile-nav .nav-links a {
+  color: #333;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 16px;
+  transition: color 0.5s;
+}
+
+.mobile-nav .nav-links a:hover {
+  color: #00aaff;
+}
+
+/* Hero */
 #hero {
   background: linear-gradient(to right, #0f2027, rgb(0, 0, 153), #2c5364);
   color: white;
@@ -107,7 +125,7 @@ header {
 }
 
 #hero .btn {
-  margin-top: 20px;
+  margin-top: 20px; /* add some space */
   padding: 12px 24px;
   background: #00aaff;
   color: white;
@@ -115,6 +133,7 @@ header {
   border-radius: 6px;
   text-decoration: none;
   transition: background 0.3s ease;
+  display: inline-block; /* ensures margin works properly */
 }
 
 #hero .btn:hover {
@@ -133,6 +152,7 @@ section h2 {
   border-radius: 8px;
 }
 
+/* Services */
 .service-grid {
   display: flex;
   justify-content: space-between;
@@ -146,8 +166,9 @@ section h2 {
   padding: 20px;
   text-align: center;
   border-radius: 12px;
-  box-shadow: 0 8px 16px rgba(0,0,0,0.05);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.05);
   transition: transform 0.3s ease;
+  min-width: 250px;
 }
 
 .service-box:hover {
@@ -160,13 +181,16 @@ section h2 {
   margin-bottom: 10px;
 }
 
+/* Contact Form */
 form {
   display: flex;
   flex-direction: column;
   gap: 15px;
+  margin-top: 20px;
 }
 
-form input, form textarea {
+form input,
+form textarea {
   padding: 12px;
   border: 1px solid #ccc;
   border-radius: 8px;
@@ -181,12 +205,14 @@ form button {
   border-radius: 8px;
   cursor: pointer;
   font-size: 16px;
+  transition: background 0.3s ease;
 }
 
 form button:hover {
   background: #00aaff;
 }
 
+/* Footer */
 footer {
   background: #1a1a2e;
   color: white;
@@ -195,9 +221,18 @@ footer {
   margin-top: 40px;
 }
 
+/* Responsive */
 @media (max-width: 768px) {
+  .desktop-nav {
+    display: none;
+  }
+
+  .hamburger {
+    display: block;
+  }
+
   .nav-container {
-    flex-direction: column;
+    position: relative;
   }
 
   .service-grid {
