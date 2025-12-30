@@ -109,6 +109,7 @@ export default function Footer() {
                 { href: "#portfolio", label: "Portfolio" },
                 { href: "#why-us", label: "Why Us" },
                 { href: "#contact", label: "Contact" },
+                { href: "/privacy", label: "Privacy Policy" },
               ].map((link, index) => (
                 <motion.li
                   key={link.href}
@@ -117,12 +118,12 @@ export default function Footer() {
                   viewport={{ once: true }}
                   transition={{ delay: 0.2 + index * 0.05 }}
                 >
-                  <a 
+                  <Link 
                     href={link.href} 
                     className="text-sm sm:text-base hover:text-primary dark:hover:text-blue-400 transition-colors inline-block"
                   >
                     {link.label}
-                  </a>
+                  </Link>
                 </motion.li>
               ))}
             </ul>
@@ -166,6 +167,11 @@ export default function Footer() {
         >
           <p>
             &copy; {new Date().getFullYear()} Vinova Infotech. All rights reserved. | Comprehensive Digital Services • MVP & ERP Solutions
+          </p>
+          <p className="mt-2">
+            <Link href="/privacy" className="hover:text-primary dark:hover:text-blue-400 transition-colors">
+              Privacy Policy
+            </Link>
           </p>
         </motion.div>
       </div>
